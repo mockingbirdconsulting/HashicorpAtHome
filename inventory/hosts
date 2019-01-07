@@ -1,0 +1,10 @@
+homeserver01.consul ansible_host=<TARGET IP ADDRESS>
+
+[consul_instances]
+homeserver01.consul consul_node_role=server consul_bootstrap_expect=true
+
+[vault_instances]
+homeserver01.consul
+
+[docker_instances]
+homeserver01.consul nomad_node_role=both

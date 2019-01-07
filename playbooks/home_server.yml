@@ -1,0 +1,59 @@
+# Hashicorp At Home - A series of blog posts by Mockingbird Consulting
+# Read the original at https://www.mockingbirdconsulting.co.uk/blog/2019-01-05-hashicorp-at-home/
+#
+# This code is licensed under the MIT License, and remains the copyright of Mockingbird Consulting Ltd.
+- hosts: all
+  become: true
+  become_user: root
+  roles:
+      - {role: Datadog.datadog, tags: ['base', 'monitoring']}
+
+- hosts: consul_instances
+  become: true
+  become_user: root
+  roles:
+      - {role: brianshumate.consul, tags: ['consul']}
+  vars:
+      consul_datacenter: "homeserver"
+      consul_acl_datacenter: "homeserver"
+      consul_domain: "consul"
+      consul_dnsmasq_enable: yes
+      consul_recursors: ['8.8.8.8', '8.8.4.4']
+      consul_acl_master_token_display: yes
+
+- hosts: vault_instances
+  become: true
+  become_user: root
+  roles:
+      - {role: brianshumate.vault, tags: ['vault']}
+  vars:
+      vault_ui: yes
+      vault_datacenter: "homeserver"
+      vault_domain: "consul"
+      vault_cluster_disable: yes
+
+- hosts: docker_instances
+  become: true
+  become_user: root
+  roles:
+      - {role: geerlingguy.docker, tags: ['docker']}
+      - {role: brianshumate.nomad, tags: ['docker', 'nomad']}
+      - {role: kibatic.traefik, tags: ['docker', 'nomad', 'traefik']}
+  vars:
+      nomad_datacenter: "homeserver"
+      nomad_domain: "consul"
+      nomad_use_consul: yes
+      nomad_vault_enabled: yes
+      nomad_vault_address: http://<YOUR VAULT SERVER IP ADDRESS>:8200/
+      nomad_bootstrap_expect: 1
+      nomad_docker_enable: yes
+      permanent: yes
+      nomad_ports_http: 4646
+      nomad_ports_rpc: 4647
+      nomad_ports_serf: 4648
+      nomad_config_custom:
+          telemetry:
+              publish_allocation_metrics: true
+              publish_node_metrics: true
+              datadog_address: "localhost:8125"
+              disable_hostname: true
