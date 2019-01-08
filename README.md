@@ -6,7 +6,13 @@ This is the code to accompany the "[Hashicorp At Home](https://www.mockingbirdco
 
 1. Clone the repository onto the machine you'll use to deploy the software to the server
 2. Install [Ansible](https://www.ansible.com)
-3. Use Ansible Galaxy to install the roles listed in part two of the series.  Run it from the cloned directory and ansible will put them in the correct location.
+3. Use Ansible Galaxy to install the following roles:
+  * [Datadog](https://galaxy.ansible.com/DataDog/datadog)
+  * [Traefik](https://galaxy.ansible.com/kibatic/traefik)
+  * [Docker](https://galaxy.ansible.com/geerlingguy/docker)
+  * [Vault](https://galaxy.ansible.com/brianshumate/vault)
+  * [Nomad](https://galaxy.ansible.com/brianshumate/nomad)
+  * [Consul](https://galaxy.ansible.com/brianshumate/consul)
 4. Update `inventory/hosts` and set the target IP Address to the ip address you are using for your server
 5. Update `plays/home_server.yml` and set the following4
   * All variables ending in `_domain` must be set to the same value
