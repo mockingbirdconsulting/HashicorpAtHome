@@ -13,7 +13,7 @@ This is the code to accompany the "[Hashicorp At Home](https://www.mockingbirdco
   * [Vault](https://galaxy.ansible.com/brianshumate/vault)
   * [Nomad](https://galaxy.ansible.com/brianshumate/nomad)
   * [Consul](https://galaxy.ansible.com/brianshumate/consul)
-  1. Optionally run `ansible-galaxy install --roles-path ~/ansible/roles -r requirements.yml` from the project's root directory.
+    - Optionally run `ansible-galaxy install --roles-path ~/ansible/roles -r requirements.yml` from the project's root directory.
 4. Update `inventory/hosts` and set the target IP Address to the ip address you are using for your server
 5. Update `plays/home_server.yml` and set the following4
   * All variables ending in `_domain` must be set to the same value
