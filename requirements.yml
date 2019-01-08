@@ -1,0 +1,6 @@
+- src: datadog.datadog
+- src: kibatic.traefik
+- src: geerlingguy.docker
+- src: brianshumate.vault
+- src: brianshumate.nomad
+- src: brianshumate.consul
