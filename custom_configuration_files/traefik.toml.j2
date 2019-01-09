@@ -1,0 +1,43 @@
+{#
+    Check traefik sample for full config options
+    https://raw.githubusercontent.com/containous/traefik/master/traefik.sample.toml
+#}
+
+# Entrypoints to be used by frontends that do not specify any entrypoint.
+# Each frontend can specify its own entrypoints.
+#
+# Optional
+# Default: ["http"]
+#
+defaultEntryPoints = ["http"]
+
+# Entrypoints definition
+#
+# Optional
+# Default:
+[entryPoints]
+    [entryPoints.http]
+    address = ":80"
+
+logLevel = "INFO"
+
+[docker]
+endpoint = "unix:///var/run/docker.sock"
+domain = "consul"
+watch = true
+
+[consul]
+endpoint = "127.0.0.1:8500"
+watch = true
+prefix = "traefik"
+
+[consulCatalog]
+endpoint = "127.0.0.1:8500"
+domain = "service.consul"
+exposedByDefault = true
+prefix = "traefik"
+
+[api]
+  entryPoint = "traefik"
+  dashboard = true
+  debug = true
