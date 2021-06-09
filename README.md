@@ -1,5 +1,12 @@
 # Hashicorp at Home
 
+** PLEASE BE AWARE THAT MOCKINGBIRD CONSULTING IS NO LONGER TRADING.  AS A RESULT, THE BLOG POST IS NO LONGER ONLINE **
+
+You can find an updated version of this article, along with the updated code in a new repository on [Budget Smart Home](https://www.budgetsmarthome.co.uk/tags/monitoring/)
+
+** THE CONTENT BELOW REMAINS FOR HISTORICAL PURPOSES ONLY! **
+
+
 This is the code to accompany the "[Hashicorp At Home](https://www.mockingbirdconsulting.co.uk/blog/2019-01-05-hashicorp-at-home/)" series on our website.
 
 ## How to use this repository
